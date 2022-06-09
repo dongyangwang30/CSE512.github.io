@@ -1,0 +1,340 @@
+%%This is a standard LaTeX2e article document template. personal version 12/5/200%%
+\documentclass[11pt,twoside]{article}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%packages%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagestyle{plain}
+
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amstext}
+\usepackage{multicol}
+\usepackage{amsthm}
+\usepackage{tikz}
+\usepackage{graphicx}
+%\theoremstyle{theorem}
+
+\usepackage{amsxtra}  
+\usepackage[pdftex, breaklinks, linktocpage=true, bookmarksopen=true,bookmarksopenlevel=0,bookmarksnumbered=true]{hyperref}
+
+\hypersetup{
+pdftitle = {Non-Abelian Composition Factors of $\ell$-Brauer $m$-Rational Groups},
+pdfauthor = {\textcopyright\ Stephen Trefethen},
+pdfcreator = {\LaTeX\ with package \flqq hyperref\frqq},
+colorlinks = {true}
+} 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%formatting%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\topmargin}{0 in}        %%%  This sets all the spacing stuff to use the page more
+\setlength{\oddsidemargin}{0in}    %%%  efficiently than the normal "article" setup would.
+\setlength{\evensidemargin}{0in}   %%%  It's OK to play with these some.
+\setlength{\textheight}{9in}     %%%
+\setlength{\textwidth}{6.5in}     %%%
+\setlength{\headsep}{0in}          %%%
+\setlength{\headheight}{0in}       %%%
+%\setlength{\footskip}{0in}         %%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\indep}{\perp \!\!\! \perp}
+\DeclareFontFamily{OT1}{rsfs}{}
+\DeclareFontShape{OT1}{rsfs}{n}{it}{<-> rsfs10}{}
+\DeclareMathAlphabet{\mathscr}{OT1}{rsfs}{n}{it}
+
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\Frob}{Frob}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\PSU}{PSU}
+\DeclareMathOperator{\PGU}{PGU}
+\DeclareMathOperator{\PCO}{PCO}
+\DeclareMathOperator{\Pro}{P}
+\DeclareMathOperator{\GU}{GU}
+\DeclareMathOperator{\GO}{GO}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\St}{St}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Spin}{Spin}
+\DeclareMathOperator{\PSp}{PSp}
+\DeclareMathOperator{\PCSp}{PCSp}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Out}{Out}
+\DeclareMathOperator{\Orb}{Orb}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\Char}{char}
+\DeclareMathOperator{\Fix}{Fix}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\Irr}{Irr}
+\DeclareMathOperator{\IBr}{IBr}
+\DeclareMathOperator{\Bil}{Bil}
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\sgn}{sgn}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\im}{\mathrm{im}}
+\renewcommand{\O}{\mathscr{O}}
+\renewcommand{\a}{\mathfrak{a}}
+\newcommand{\p}{\mathfrak{p}}
+\newcommand{\Kbar}{\overline{K}}
+\newcommand{\X}{\mathcal{X}}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{claim}[thm]{Claim}
+
+
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{rmk}[thm]{Remark}
+\newtheorem{example}[thm]{Example}
+\newtheorem{exercise}[thm]{Exercise}
+
+\title{CSE 512 Final Projection Distribution Document \\{\large Spring 2022}}
+\author{Dongyang Wang}
+\date{\empty}
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\newpage
+\Large
+
+\textbf{Normal Distribution:} $X \sim N(\mu,\sigma^2)$\\
+
+PDF: $f_X(x) = \frac{1}{{\sigma \sqrt {2\pi } }}e^{{{ - \left( {x - \mu } \right)^2 } \mathord{\left/ {\vphantom {{ - \left( {x - \mu } \right)^2 } {2\sigma ^2 }}} \right. \kern-\nulldelimiterspace} {2\sigma ^2 }}}$ for $\mu \in \R$ and $\sigma^2 \in \R_+$
+
+Support: $x\in \R$
+
+CDF: $F_X(x) = \frac{1}{2}+ \frac{1}{2} erf(\frac{x - \mu}{\sigma \sqrt 2})$ where $erf(\frac{x - \mu}{\sigma \sqrt 2})= \frac{2}{\sqrt{\pi}}\int\limits_0^{\frac{x - \mu}{\sigma \sqrt 2}} { e^{ - t^2} dt}$
+\\
+
+MGF: $e^{\mu t + \frac{\sigma^2t^2}{2}}$
+
+Mean: $\mu$
+
+Variance: $\sigma^2$
+\\
+
+Transformation to $\chi^2(n)$: $\sum_{i=1}^n(\frac{X_i - \mu}{\sigma})^2$
+\\
+
+\textbf{Exponential Distribution:} $X \sim Exp(\lambda)$\\
+
+PDF: $f_X(x) = \lambda e^{-\lambda x}$ for $\lambda > 0$
+
+Support: $x \in [0,\infty)$
+
+CDF: $F_X(x) = 1 -e^{-\lambda x}$
+\\
+
+MGF: $\frac{\lambda}{\lambda - t}$ for $t<\lambda$
+
+Mean: $\frac{1}{\lambda}$
+
+Variance: $\frac{1}{\lambda^2}$
+\\
+
+Transformation to $\chi^2(n)$: $2\lambda \sum_{i=1}^nX_i$
+
+Transformation to $F(n_1,n_2)$: $\lambda = 1$, $\frac{X_1}{X_2}$
+
+Transformation to $Gamma(1, \beta)$: $Exp(\beta) \equiv Gamma(1, \beta)$
+\\
+
+Memoryless Property: $P(X>x+a|X>a) = P(X>x)$
+
+\newpage 
+
+\textbf{Gamma Distribution:} $X \sim Gamma(\alpha,\beta)$\\
+
+PDF: $f_X(x) = \frac{\beta^\alpha }{\Gamma(\alpha)} x^{\alpha -1}e^{-\beta x}$, where $\Gamma(\alpha)= \int\limits_0^\infty {s^{\alpha - 1} e^{ - s} ds}$, for $\alpha,\beta >0$
+
+Support: $x\in (0,\infty)$
+
+CDF: $F_X(x) = \frac{\gamma(\alpha, \beta x)}{\Gamma(\alpha)}$ where $\gamma(\alpha, \beta x) = \int\limits_0^{\beta x} {t^{\alpha - 1} e^{ - t} dt}$
+\\
+
+MGF: $(\frac{\beta}{\beta - t})^\alpha$
+
+Mean: $\frac{\alpha}{\beta}$
+
+Variance: $\frac{\alpha}{\beta^2}$
+\\
+
+Transformation to $Exp(\beta)$: $Gamma(1, \beta) \equiv Exp(\beta)$
+
+Transformation to $Beta(\alpha,\beta)$: $\frac{X_1}{X_1 + X_2}$
+
+Transformation to $N(\mu, \sigma^2)$: $\mu=\frac{\beta}{\alpha}$, $\sigma^2=\frac{\beta}{\alpha^2}$, $\beta \to \infty$
+
+Transformation to $\chi^2(n)$: $\alpha=\frac{1}{2}$, $\beta= \frac{n}{2}$
+\\
+
+\textbf{Beta Distribution:} $X \sim Beta(\alpha,\beta)$\\
+
+PDF: $f_X(x) = \frac{x^{\alpha -1}(1-x)^{\beta - 1}}{B(\alpha, \beta)}$ where $B(\alpha, \beta) = \frac{\Gamma(\alpha) \Gamma(\beta)}{\Gamma(\alpha + \beta)} $ for $\alpha,\beta >0$
+
+Support: $x\in [0,1]$
+
+CDF: $F_X(x) = I_x(\alpha, \beta) = \frac{\int\limits_0^{x} {t^{\alpha - 1} (1-t)^{ \beta - 1} dt} }{B(\alpha, \beta)}$
+\\
+
+MGF: $1 + \sum_{k=1}^{\infty} (\prod_{r=0}^{k-1} \frac{\alpha + r}{\alpha + \beta + r} )\frac{t^k}{k!}$
+
+Mean: $\frac{\alpha}{\alpha + \beta}$
+
+Variance: $\frac{\alpha \beta}{(\alpha + \beta)^2(\alpha + \beta +1)}$
+\\
+
+Transformation to $Unif(0,1)$: $Beta(0,1) \equiv Unif(0,1)$
+\\
+
+\newpage 
+
+\textbf{Uniform Distribution:} $X \sim Unif(a,b)$\\
+
+PDF: $f_X(x) = \frac{1}{b-a}$ for $-\infty < a < b < \infty$
+
+Support: $x \in [a,b]$
+
+CDF: $F_X(x) =\frac{x -a}{b-a}$
+\\
+
+MGF: $\begin{cases}
+        \frac{e^{tb} - e^{ta}}{t(b-a)}, & \text{for } t = 0\\
+        1, & \text{for } t \neq 0\\
+        \end{cases}$
+
+
+Mean: $\frac{a+b}{2}$
+
+Variance: $\frac{(b-a)^2}{12}$
+\\
+
+Transformation to $Exp(\lambda)$: $\frac{-log(Y)}{\lambda}$ where $Y = \frac{X-a}{b-a}$
+\\
+
+
+
+\textbf{Chi-Squared Distribution:} $X \sim \chi^2(n)$\\
+
+PDF: $f_X(x) = \frac{1}{2^{n/2} \Gamma(n/2)} x^{\frac{n}{2} -1} e^{-\frac{x}{2}}$ 
+
+Support: $n \in \N_+$
+
+CDF: $F_X(x) = \frac{1}{\Gamma(n/2)} \gamma(\frac{n}{2}, \frac{x}{2})$
+\\
+
+MGF: $(1-2t)^{-\frac{n}{2}}$ for $t < \frac{1}{2}$
+
+Mean: $n$
+
+Variance: $2n$
+\\
+
+Transformation to $F(n_1, n_2)$: $\frac{X_1/n_1}{X_2/n_2}$
+
+Transformation to $Exp(\lambda)$: $\chi^2(2) \equiv Exp(\frac{1}{2}) $
+
+\\
+
+
+
+\newpage
+
+\textbf{F Distribution:} $X \sim F(x;d_1,d_2)$\\
+
+PDF: $f_X(x) = \frac{\sqrt{\frac{(d_1 x)^{d_1} {d_2}^{d_2}}{(d_1x + d_2)^{d_1+d_2} }   }}{x B(\frac{d_1}{2}, \frac{d_2}{2}) }$, $d_1, d_2 > 0$ are degrees of freedom
+
+Support: $x \in (0,\infty)$ if $d_1 = 1$, otherwise $x \in [0,\infty)$
+
+CDF: $F_X(x) = I_{\frac{d_1x}{d_1x+d_2}}(\frac{d_1}{2}, \frac{d_2}{2})$
+\\
+
+MGF: Does Not Exist
+
+Mean: $\frac{d_2}{d_2 - 2}$ for $d_2>2$
+
+Variance: $\frac{d_2}{d_2 - 2}$ for $d_2>4$
+\\
+
+Transformation to $\chi^2(n)$: $n_1 X_1$, $n_2 \to \infty$ 
+\\
+
+\textbf{Binomial Distribution:} $X \sim Binomial(n,p)$\\
+
+PMF: $f_X(x) =  {n \choose k} p^k (1-p)^{n-k}$ for $p \in [0,1]$
+
+Support: $k \in \{0, 1, 2...n \}$
+
+CDF: $F_X(x) =   \sum_{i=0}^k  {n \choose k} p^k (1-p)^{n-k}$
+\\
+
+MGF: $( 1-p + p e^t)^n$
+
+Mean: $np$
+
+Variance: $np(1-p)$
+\\
+
+Transformation to $N(\mu, \sigma^2)$: $\mu = n p$, $\sigma^2=n p (1-p)$, $n \to \infty$ 
+
+Transformation to $Poisson(\lambda)$: $\lambda = n p$, $n \to \infty$ 
+\\
+\newpage
+
+\textbf{Poisson Distribution:} $X \sim Pois(\lambda)$\\
+
+PMF: $f_X(x) = \frac{\lambda^k e^{-\lambda}}{k!}$ for $\lambda \in (0,\infty)$
+
+Support: $k \in \N_0$ 
+
+CDF: $F_X(x) = \sum_{i=0}^k  \frac{\lambda^k e^{-\lambda}}{k!} $
+\\
+
+MGF: $e^{\lambda (e^t -1)} $
+
+Mean: $\lambda$
+
+Variance: $\lambda$
+\\
+
+Transformation to $N(\mu, \sigma^2)$: $\mu = \lambda$, $\sigma^2=\lambda$, $\lambda \to \infty$ 
+\\
+
+\textbf{Geometric Distribution:} $X \sim Geom(p)$\\
+
+PMF: $f_X(x) = p(1-p)^{k-1}$ for $0<p\leq 1$
+
+Support: number of trials $k \in \{1,2,3 ... \}$ 
+
+CDF: $F_X(x) =  1 - (1-p)^k$
+\\
+
+MGF: $\frac{pe^t}{1-(1-p)e^t}$
+
+Mean: $\frac{1}{p}$
+
+Variance: $\frac{1-p}{p^2}$
+\\
+
+Transformation to $Poisson(\lambda)$: $\sum_{i=1}^r X_i$, $\lambda=\frac{r}{p}$, $r \to \infty$
+\\
+
+Memoryless Property: $P(X>x+a|X>a) = P(X>x)$
+\\
+\end{document}
